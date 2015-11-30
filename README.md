@@ -8,6 +8,7 @@ _socketServer = [[LJSocketServer alloc] initinitWithPort:8011];//默认8011端�
 
 2.开始
 [_socketServer startSocketServer];
+
 3.停止
 [_socketServer stopSocketConnection];
 
