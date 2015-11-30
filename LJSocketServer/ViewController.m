@@ -16,7 +16,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _socketServer = [[LJSocketServer alloc] init];
+    _socketServer = [[LJSocketServer alloc] initWithPort:8011];
     //此处时https
     //公钥
 //    NSString *certificatePath = [[NSBundle mainBundle] pathForResource:@"public_key" ofType:@"der"];

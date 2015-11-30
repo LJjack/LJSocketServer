@@ -60,10 +60,10 @@
     // 设置代理，监听输入流和输出流中的变化
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
-    // Scoket是建立的长连接，需要将输入输出流添加到主运行循环
-    // 如果不将流加入主运行循环，delegate拒绝工作
-    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    // Scoket是建立的长连接，需要将输入输出流添加到当前运行循环
+    NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
+    [inputStream scheduleInRunLoop:currentRunLoop forMode:NSDefaultRunLoopMode];
+    [outputStream scheduleInRunLoop:currentRunLoop forMode:NSDefaultRunLoopMode];
     // 打开输入流和输出流，准备开始文件读写操作
     [inputStream open];
     [outputStream open];

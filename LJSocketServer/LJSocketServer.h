@@ -12,8 +12,8 @@
 @interface LJSocketServer : NSObject
 
 @property (nonatomic, assign,nullable) SecIdentityRef    serverIdentity __attribute(( NSObject ));
+- (_Nonnull instancetype)initWithPort:(UInt16)port;
 -(void) startSocketServer;
-
 - (void)stopAllClientConnection;
 - (void)stopSocketConnection;
 @end
