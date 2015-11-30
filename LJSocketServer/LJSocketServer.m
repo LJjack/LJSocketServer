@@ -56,7 +56,6 @@ static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CF
     return theSocket;
 }
 - (BOOL)setupNewSocket {
-    NSLog(@"currentThread %@",[NSThread currentThread]);
     if (!_theAddress4) return NO;
     if (_theSocket4) [self stopSocketConnection];
     _theSocket4 = [self newAcceptSocketForAddress:_theAddress4];
