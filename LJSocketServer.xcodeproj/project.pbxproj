@@ -1,0 +1,365 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		836B09B31C0750290030D777 /* LJSocketPairStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B09B21C0750290030D777 /* LJSocketPairStream.m */; };
+		836B09B61C07586A0030D777 /* LJSocketIpAndPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B09B51C07586A0030D777 /* LJSocketIpAndPort.m */; };
+		836F96D01C08328C00878C1F /* LJSocketHandleHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F96CF1C08328C00878C1F /* LJSocketHandleHtml.m */; };
+		836F96D21C08363A00878C1F /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 836F96D11C08363A00878C1F /* index.html */; };
+		838862071C0700E300A7C7DF /* LJSocketHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 838862061C0700E300A7C7DF /* LJSocketHTTPResponse.m */; };
+		8388620C1C07058900A7C7DF /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8388620B1C07058800A7C7DF /* libz.1.2.5.tbd */; };
+		839535E91C030BA3006DFBA1 /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = 839535E71C030BA3006DFBA1 /* public_key.der */; };
+		839535F71C031466006DFBA1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FAAEB41BF58A79000DA3EE /* AppDelegate.m */; };
+		839535F91C031466006DFBA1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FAAEBA1BF58A79000DA3EE /* ViewController.m */; };
+		839535FB1C031466006DFBA1 /* LJSocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FAAEC81BF58AAA000DA3EE /* LJSocketServer.m */; };
+		839536001C031483006DFBA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FAAEB71BF58A79000DA3EE /* main.m */; };
+		83D0AEAA1C0BF6850081C17D /* LJGzip.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0AEA91C0BF6850081C17D /* LJGzip.m */; };
+		83D0AEAC1C0BF9750081C17D /* private_key.pfx in Resources */ = {isa = PBXBuildFile; fileRef = 83D0AEAB1C0BF9750081C17D /* private_key.pfx */; };
+		83FAAEBD1BF58A79000DA3EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FAAEBC1BF58A79000DA3EE /* Assets.xcassets */; };
+		83FAAEC01BF58A79000DA3EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83FAAEBE1BF58A79000DA3EE /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		836B09B11C0750290030D777 /* LJSocketPairStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSocketPairStream.h; sourceTree = "<group>"; };
+		836B09B21C0750290030D777 /* LJSocketPairStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSocketPairStream.m; sourceTree = "<group>"; };
+		836B09B41C07586A0030D777 /* LJSocketIpAndPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSocketIpAndPort.h; sourceTree = "<group>"; };
+		836B09B51C07586A0030D777 /* LJSocketIpAndPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSocketIpAndPort.m; sourceTree = "<group>"; };
+		836F96CE1C08328C00878C1F /* LJSocketHandleHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSocketHandleHtml.h; sourceTree = "<group>"; };
+		836F96CF1C08328C00878C1F /* LJSocketHandleHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSocketHandleHtml.m; sourceTree = "<group>"; };
+		836F96D11C08363A00878C1F /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		838862051C0700E300A7C7DF /* LJSocketHTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSocketHTTPResponse.h; sourceTree = "<group>"; };
+		838862061C0700E300A7C7DF /* LJSocketHTTPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSocketHTTPResponse.m; sourceTree = "<group>"; };
+		8388620B1C07058800A7C7DF /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		839535E71C030BA3006DFBA1 /* public_key.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = public_key.der; sourceTree = "<group>"; };
+		83D0AEA81C0BF6850081C17D /* LJGzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJGzip.h; sourceTree = "<group>"; };
+		83D0AEA91C0BF6850081C17D /* LJGzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJGzip.m; sourceTree = "<group>"; };
+		83D0AEAB1C0BF9750081C17D /* private_key.pfx */ = {isa = PBXFileReference; lastKnownFileType = file; path = private_key.pfx; sourceTree = "<group>"; };
+		83FAAEB01BF58A79000DA3EE /* LJSocketServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSocketServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		83FAAEB31BF58A79000DA3EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		83FAAEB41BF58A79000DA3EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		83FAAEB71BF58A79000DA3EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		83FAAEB91BF58A79000DA3EE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		83FAAEBA1BF58A79000DA3EE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		83FAAEBC1BF58A79000DA3EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		83FAAEBF1BF58A79000DA3EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		83FAAEC11BF58A79000DA3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83FAAEC71BF58AAA000DA3EE /* LJSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSocketServer.h; sourceTree = "<group>"; };
+		83FAAEC81BF58AAA000DA3EE /* LJSocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSocketServer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		83FAAEAD1BF58A79000DA3EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8388620C1C07058900A7C7DF /* libz.1.2.5.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		83D0AEAD1C0C1B7C0081C17D /* socketServer */ = {
+			isa = PBXGroup;
+			children = (
+				83FAAEC71BF58AAA000DA3EE /* LJSocketServer.h */,
+				83FAAEC81BF58AAA000DA3EE /* LJSocketServer.m */,
+				836B09B11C0750290030D777 /* LJSocketPairStream.h */,
+				836B09B21C0750290030D777 /* LJSocketPairStream.m */,
+				836F96CE1C08328C00878C1F /* LJSocketHandleHtml.h */,
+				836F96CF1C08328C00878C1F /* LJSocketHandleHtml.m */,
+				836B09B41C07586A0030D777 /* LJSocketIpAndPort.h */,
+				836B09B51C07586A0030D777 /* LJSocketIpAndPort.m */,
+				838862051C0700E300A7C7DF /* LJSocketHTTPResponse.h */,
+				838862061C0700E300A7C7DF /* LJSocketHTTPResponse.m */,
+				83D0AEA81C0BF6850081C17D /* LJGzip.h */,
+				83D0AEA91C0BF6850081C17D /* LJGzip.m */,
+			);
+			name = socketServer;
+			sourceTree = "<group>";
+		};
+		83D0AEAE1C0C1BAE0081C17D /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				839535E71C030BA3006DFBA1 /* public_key.der */,
+				83D0AEAB1C0BF9750081C17D /* private_key.pfx */,
+				836F96D11C08363A00878C1F /* index.html */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		83FAAEA71BF58A79000DA3EE = {
+			isa = PBXGroup;
+			children = (
+				8388620B1C07058800A7C7DF /* libz.1.2.5.tbd */,
+				83FAAEB21BF58A79000DA3EE /* LJSocketServer */,
+				83FAAEB11BF58A79000DA3EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		83FAAEB11BF58A79000DA3EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				83FAAEB01BF58A79000DA3EE /* LJSocketServer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83FAAEB21BF58A79000DA3EE /* LJSocketServer */ = {
+			isa = PBXGroup;
+			children = (
+				83FAAEB31BF58A79000DA3EE /* AppDelegate.h */,
+				83FAAEB41BF58A79000DA3EE /* AppDelegate.m */,
+				83FAAEB91BF58A79000DA3EE /* ViewController.h */,
+				83FAAEBA1BF58A79000DA3EE /* ViewController.m */,
+				83D0AEAD1C0C1B7C0081C17D /* socketServer */,
+				83D0AEAE1C0C1BAE0081C17D /* resources */,
+				83FAAEBC1BF58A79000DA3EE /* Assets.xcassets */,
+				83FAAEBE1BF58A79000DA3EE /* Main.storyboard */,
+				83FAAEC11BF58A79000DA3EE /* Info.plist */,
+				83FAAEB61BF58A79000DA3EE /* Supporting Files */,
+			);
+			path = LJSocketServer;
+			sourceTree = "<group>";
+		};
+		83FAAEB61BF58A79000DA3EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83FAAEB71BF58A79000DA3EE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		83FAAEAF1BF58A79000DA3EE /* LJSocketServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83FAAEC41BF58A79000DA3EE /* Build configuration list for PBXNativeTarget "LJSocketServer" */;
+			buildPhases = (
+				83FAAEAC1BF58A79000DA3EE /* Sources */,
+				83FAAEAD1BF58A79000DA3EE /* Frameworks */,
+				83FAAEAE1BF58A79000DA3EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LJSocketServer;
+			productName = LJSocketServer;
+			productReference = 83FAAEB01BF58A79000DA3EE /* LJSocketServer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83FAAEA81BF58A79000DA3EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = LJ;
+				TargetAttributes = {
+					83FAAEAF1BF58A79000DA3EE = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 83FAAEAB1BF58A79000DA3EE /* Build configuration list for PBXProject "LJSocketServer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83FAAEA71BF58A79000DA3EE;
+			productRefGroup = 83FAAEB11BF58A79000DA3EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				83FAAEAF1BF58A79000DA3EE /* LJSocketServer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		83FAAEAE1BF58A79000DA3EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836F96D21C08363A00878C1F /* index.html in Resources */,
+				83FAAEBD1BF58A79000DA3EE /* Assets.xcassets in Resources */,
+				83D0AEAC1C0BF9750081C17D /* private_key.pfx in Resources */,
+				83FAAEC01BF58A79000DA3EE /* Main.storyboard in Resources */,
+				839535E91C030BA3006DFBA1 /* public_key.der in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		83FAAEAC1BF58A79000DA3EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				839536001C031483006DFBA1 /* main.m in Sources */,
+				836B09B31C0750290030D777 /* LJSocketPairStream.m in Sources */,
+				839535F71C031466006DFBA1 /* AppDelegate.m in Sources */,
+				839535F91C031466006DFBA1 /* ViewController.m in Sources */,
+				839535FB1C031466006DFBA1 /* LJSocketServer.m in Sources */,
+				836B09B61C07586A0030D777 /* LJSocketIpAndPort.m in Sources */,
+				83D0AEAA1C0BF6850081C17D /* LJGzip.m in Sources */,
+				836F96D01C08328C00878C1F /* LJSocketHandleHtml.m in Sources */,
+				838862071C0700E300A7C7DF /* LJSocketHTTPResponse.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		83FAAEBE1BF58A79000DA3EE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83FAAEBF1BF58A79000DA3EE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		83FAAEC21BF58A79000DA3EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		83FAAEC31BF58A79000DA3EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		83FAAEC51BF58A79000DA3EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LJSocketServer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = rj.LJSocketServer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		83FAAEC61BF58A79000DA3EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LJSocketServer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = rj.LJSocketServer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		83FAAEAB1BF58A79000DA3EE /* Build configuration list for PBXProject "LJSocketServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83FAAEC21BF58A79000DA3EE /* Debug */,
+				83FAAEC31BF58A79000DA3EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83FAAEC41BF58A79000DA3EE /* Build configuration list for PBXNativeTarget "LJSocketServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83FAAEC51BF58A79000DA3EE /* Debug */,
+				83FAAEC61BF58A79000DA3EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83FAAEA81BF58A79000DA3EE /* Project object */;
+}
