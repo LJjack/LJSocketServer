@@ -30,6 +30,8 @@ static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CF
     if (self = [super init]) {
         self.port = port?port:8011;
         self.pairStreamMArray = [NSMutableArray array];
+        _theSocket4 = NULL;
+        _theSource4 = NULL;
         //创建socket上下文
         _theContext.version = 0;// 结构体的版本，必须为0
         _theContext.info = (__bridge void *)(self);
