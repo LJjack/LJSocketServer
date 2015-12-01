@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8308DCE71C0D397F00698962 /* effect0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8308DCE61C0D397F00698962 /* effect0.png */; };
+		8308DCEB1C0D3B8100698962 /* effect.png in Resources */ = {isa = PBXBuildFile; fileRef = 8308DCEA1C0D3B8100698962 /* effect.png */; };
 		836B09B31C0750290030D777 /* LJSocketPairStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B09B21C0750290030D777 /* LJSocketPairStream.m */; };
 		836B09B61C07586A0030D777 /* LJSocketIpAndPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 836B09B51C07586A0030D777 /* LJSocketIpAndPort.m */; };
 		836F96D01C08328C00878C1F /* LJSocketHandleHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F96CF1C08328C00878C1F /* LJSocketHandleHtml.m */; };
@@ -20,12 +22,13 @@
 		839536001C031483006DFBA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FAAEB71BF58A79000DA3EE /* main.m */; };
 		83D0AEAA1C0BF6850081C17D /* LJGzip.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D0AEA91C0BF6850081C17D /* LJGzip.m */; };
 		83D0AEAC1C0BF9750081C17D /* private_key.pfx in Resources */ = {isa = PBXBuildFile; fileRef = 83D0AEAB1C0BF9750081C17D /* private_key.pfx */; };
-		83D0AEB01C0C3E1E0081C17D /* 123.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83D0AEAF1C0C3E1E0081C17D /* 123.jpg */; };
 		83FAAEBD1BF58A79000DA3EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FAAEBC1BF58A79000DA3EE /* Assets.xcassets */; };
 		83FAAEC01BF58A79000DA3EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83FAAEBE1BF58A79000DA3EE /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8308DCE61C0D397F00698962 /* effect0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = effect0.png; sourceTree = "<group>"; };
+		8308DCEA1C0D3B8100698962 /* effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = effect.png; sourceTree = "<group>"; };
 		836B09B11C0750290030D777 /* LJSocketPairStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSocketPairStream.h; sourceTree = "<group>"; };
 		836B09B21C0750290030D777 /* LJSocketPairStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSocketPairStream.m; sourceTree = "<group>"; };
 		836B09B41C07586A0030D777 /* LJSocketIpAndPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSocketIpAndPort.h; sourceTree = "<group>"; };
@@ -40,7 +43,6 @@
 		83D0AEA81C0BF6850081C17D /* LJGzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJGzip.h; sourceTree = "<group>"; };
 		83D0AEA91C0BF6850081C17D /* LJGzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJGzip.m; sourceTree = "<group>"; };
 		83D0AEAB1C0BF9750081C17D /* private_key.pfx */ = {isa = PBXFileReference; lastKnownFileType = file; path = private_key.pfx; sourceTree = "<group>"; };
-		83D0AEAF1C0C3E1E0081C17D /* 123.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 123.jpg; sourceTree = "<group>"; };
 		83FAAEB01BF58A79000DA3EE /* LJSocketServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSocketServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FAAEB31BF58A79000DA3EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		83FAAEB41BF58A79000DA3EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -88,7 +90,8 @@
 		83D0AEAE1C0C1BAE0081C17D /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				83D0AEAF1C0C3E1E0081C17D /* 123.jpg */,
+				8308DCE61C0D397F00698962 /* effect0.png */,
+				8308DCEA1C0D3B8100698962 /* effect.png */,
 				839535E71C030BA3006DFBA1 /* public_key.der */,
 				83D0AEAB1C0BF9750081C17D /* private_key.pfx */,
 				836F96D11C08363A00878C1F /* index.html */,
@@ -195,12 +198,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83D0AEB01C0C3E1E0081C17D /* 123.jpg in Resources */,
 				836F96D21C08363A00878C1F /* index.html in Resources */,
+				8308DCEB1C0D3B8100698962 /* effect.png in Resources */,
 				83FAAEBD1BF58A79000DA3EE /* Assets.xcassets in Resources */,
 				83D0AEAC1C0BF9750081C17D /* private_key.pfx in Resources */,
 				83FAAEC01BF58A79000DA3EE /* Main.storyboard in Resources */,
 				839535E91C030BA3006DFBA1 /* public_key.der in Resources */,
+				8308DCE71C0D397F00698962 /* effect0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
