@@ -12,20 +12,13 @@
 static LJSocketHandleHtmlBlock _block;
 + (void)handleHtmlWithRequestData:(NSData *)requestData block:(LJSocketHandleHtmlBlock)block{
     _block = block;
-    NSInteger index = 0;
-    NSUInteger index0 = 0,index1 = requestData.length;
-    uint8_t *mByte = (uint8_t *)requestData.bytes;
-    
-    while (index != requestData.length) {
-        if (mByte[index] == '/') index0 = index+1;
-        if (mByte[index] == 'H') {
-            index1 = index;
-            break;
-        }
-        index ++;
-    }
-    NSData *data = [requestData subdataWithRange:NSMakeRange(index0, index1-index0-1)];
-    NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    CFHTTPMessageRef message = CFHTTPMessageCreateEmpty(kCFAllocatorDefault, YES);
+    CFHTTPMessageAppendBytes(message, [requestData bytes], requestData.length);
+    CFURLRef URLRef = CFHTTPMessageCopyRequestURL(message);
+    CFRelease(message);
+    CFStringRef urlStr = CFURLGetString(URLRef);
+    NSString *htmlString = (__bridge NSString *)(urlStr);
+    htmlString = [htmlString substringFromIndex:1];
     NSRange range = [htmlString rangeOfString:@"?"];
     if (range.length>0) {
         htmlString = [htmlString substringToIndex:range.location];
@@ -33,7 +26,9 @@ static LJSocketHandleHtmlBlock _block;
     if (!htmlString||[htmlString isEqualToString:@""]) {
         htmlString = @"index.html";
     }
+    NSLog(@"**%@**",htmlString);
     [self selectedHtmlWithHtmlName:htmlString];
+    
 }
 + (void)selectedHtmlWithHtmlName:(NSString *)htmlString {
     NSString *htmlPath = [[NSBundle mainBundle] pathForResource:htmlString ofType:nil];

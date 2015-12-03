@@ -10,7 +10,10 @@
 #import "LJGzip.h"
 @implementation LJSocketHTTPResponse
 + (NSData *)getResponseDataWithData:(NSData *)data {
-    data = [LJGzip compressData:data];//压缩
+    if (data) {
+        data = [LJGzip compressData:data];//压缩
+    }
+    
     CFHTTPMessageRef message =CFHTTPMessageCreateResponse(
                                                           kCFAllocatorDefault,
                                                           200,

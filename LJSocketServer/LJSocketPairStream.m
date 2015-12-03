@@ -91,7 +91,7 @@
 {
     switch (eventCode) {
         case NSStreamEventOpenCompleted:{
-            NSLog(@"连接完成");
+            NSLog(@"连接完成 %p",self);
             if ([aStream isKindOfClass:[NSInputStream class]]) {
                 _isReadData = NO;
             }
@@ -114,7 +114,6 @@
                 });
                 _isReadData = YES;
             }
-            
             // 读从服务器接收到得数据，从输入流中读取
             // 先开辟一段缓冲区以读取数据
             NSInteger bytesRead;
