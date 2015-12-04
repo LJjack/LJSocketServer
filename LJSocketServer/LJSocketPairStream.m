@@ -126,8 +126,13 @@
         case NSStreamEventHasSpaceAvailable:
             NSLog(@"可以写入数据");
             break;
-        case NSStreamEventErrorOccurred:
+        case NSStreamEventErrorOccurred: {
             NSLog(@"发生错误");
+            if ([_requestDelegate respondsToSelector:@selector(socketPairStreamRequestDidReceiveError:)]) {
+                [_requestDelegate socketPairStreamRequestDidReceiveError:self];
+            }
+        }break;
+            
         case NSStreamEventEndEncountered:
             NSLog(@"流结束");
             // 做善后工作
@@ -148,9 +153,31 @@
             __weak typeof(self) wSelf = self;
             [LJSocketHandleHtml handleHtmlWithRequestData:self.mBuffData block:^(NSData *respData) {
                 __strong typeof(self) sSelf = wSelf;
-                NSData *responseData = [LJSocketHTTPResponse getResponseDataWithData:respData];
-                [sSelf.outputStream write:responseData.bytes maxLength:responseData.length];
+                NSData *responseHead = [LJSocketHTTPResponse getResponseDataWithData:respData];
+                [sSelf sendMessage:responseHead];
             }];
+        }
+    }
+}
+- (void)sendMessage:(NSData *)msgData {
+    
+    NSUInteger dataLen = msgData.length;
+    NSUInteger sendDataLen = kSendOrReceiveBytesNumbers;
+    NSUInteger yu = dataLen%sendDataLen;
+    NSUInteger otherDataLen = 0;
+    uint8_t buf[sendDataLen] ;
+    while ([_outputStream hasSpaceAvailable]) {
+        NSUInteger diff = dataLen - otherDataLen;
+        if (diff == yu) {
+            uint8_t oBuf[yu] ;
+            [msgData getBytes:oBuf range:NSMakeRange(otherDataLen,yu)];
+            otherDataLen += [_outputStream write:oBuf maxLength:sizeof(oBuf)];
+        }else {
+            [msgData getBytes:buf range:NSMakeRange(otherDataLen,sendDataLen)];
+            otherDataLen += [_outputStream write:buf maxLength:sizeof(buf)];
+        }
+        if (otherDataLen == dataLen) {
+            break;
         }
     }
 }
@@ -159,5 +186,8 @@
         [self.mBuffData resetBytesInRange:NSMakeRange(0, self.mBuffData.length)];
         [self.mBuffData setLength:0];
     }
+}
+- (void)dealloc {
+    [self stopPairStream];
 }
 @end

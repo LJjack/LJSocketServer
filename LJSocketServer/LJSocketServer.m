@@ -11,7 +11,7 @@
 #import "LJSocketPairStream.h"
 #import <netinet/in.h>
 #import <arpa/inet.h>
-@interface LJSocketServer ()<NSStreamDelegate>
+@interface LJSocketServer ()<NSStreamDelegate,LJSocketPairStreamDelegate>
 @property (strong,nonatomic) NSMutableArray *pairStreamMArray;
 @property (nonatomic,assign) UInt16 port;
 ////////////////socket回调函数//////////////////////
@@ -119,9 +119,18 @@ static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CF
         
         LJSocketPairStream *pairStream = [[LJSocketPairStream alloc] init];
         pairStream.serverIdentity = self.serverIdentity;
+        pairStream.requestDelegate = self;
         [pairStream createPairStreamWithSocketNativeSocketHandle:nativeSocketHandle];
         [self.pairStreamMArray addObject:pairStream];
     }
+}
+- (void)socketPairStreamRequestDidFinish:(LJSocketPairStream *)request {
+    [self.pairStreamMArray removeObject:request];
+    request = nil;
+}
+- (void)socketPairStreamRequestDidReceiveError:(LJSocketPairStream *)request {
+    [self.pairStreamMArray removeObject:request];
+    request = nil;
 }
 - (void)doCFSocketCallback:(CFSocketCallBackType)type
                  forSpcket:(CFSocketRef)socket
