@@ -9,7 +9,7 @@
  * 解析http请求报头
  */
 #import <Foundation/Foundation.h>
-typedef void(^LJSocketHandleHtmlBlock)(NSData *responseData);
+typedef void(^LJSocketHandleHtmlBlock)(NSData *responseData,NSString *contentType);
 @interface LJSocketHandleHtml : NSObject
 + (void)handleHtmlWithRequestData:(NSData *)requestData block:(LJSocketHandleHtmlBlock)block;
 @end

@@ -11,5 +11,5 @@
 #import <Foundation/Foundation.h>
 
 @interface LJSocketHTTPResponse : NSObject
-+ ( NSData * _Nullable)getResponseDataWithData:( NSData * _Nonnull )data;
++ ( NSData * _Nullable)getResponseDataWithData:( NSData * _Nonnull )data contentType:(NSString *_Nonnull)contentType;
 @end

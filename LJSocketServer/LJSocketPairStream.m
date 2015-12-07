@@ -25,6 +25,7 @@
     return self;
 }
 - (void)createPairStreamWithSocketNativeSocketHandle:(CFSocketNativeHandle)nativeSocketHandle {
+    NSLog(@"%@",[NSThread currentThread]);
     NSString *ipAddress = [LJSocketIpAndPort connectedHostFromNativeSocket4:nativeSocketHandle];
     UInt16 port = [LJSocketIpAndPort connectedPortFromNativeSocket4:nativeSocketHandle];
     self.ipAndPort = [NSString stringWithFormat:@"%@:%d",ipAddress,port];
@@ -105,13 +106,10 @@
             if (!iStream) return;
             if (!_isReadData&&[iStream hasBytesAvailable]) {
                 [self resetMBuffData];
-                
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    NSTimer *inputTime = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(readBuffEnd:) userInfo:nil repeats:YES];
-                    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-                    [runLoop addTimer:inputTime forMode:NSDefaultRunLoopMode];
-                    [runLoop run];
-                });
+                NSTimer *inputTime = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(readBuffEnd:) userInfo:nil repeats:YES];
+                NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+                [runLoop addTimer:inputTime forMode:NSDefaultRunLoopMode];
+
                 _isReadData = YES;
             }
             // 读从服务器接收到得数据，从输入流中读取
@@ -136,6 +134,9 @@
         case NSStreamEventEndEncountered:
             NSLog(@"流结束");
             // 做善后工作
+            if ([_requestDelegate respondsToSelector:@selector(socketPairStreamRequestDidFinish:)]) {
+                [_requestDelegate socketPairStreamRequestDidFinish:self];
+            }
             // 关闭流的同时，将流从主运行循环中删除
             [self stopPairStream];
             break;
@@ -150,17 +151,19 @@
         _isReadData = NO;
         //转发数据
         if (self.outputStream.streamStatus == NSStreamStatusOpen) {
+//            [self.inputStream close];
             __weak typeof(self) wSelf = self;
-            [LJSocketHandleHtml handleHtmlWithRequestData:self.mBuffData block:^(NSData *respData) {
+            [LJSocketHandleHtml handleHtmlWithRequestData:self.mBuffData block:^(NSData *resData, NSString *contentType) {
                 __strong typeof(self) sSelf = wSelf;
-                NSData *responseHead = [LJSocketHTTPResponse getResponseDataWithData:respData];
-                [sSelf sendMessage:responseHead];
+                NSData *responseData = [LJSocketHTTPResponse getResponseDataWithData:resData contentType:contentType];
+                NSLog(@"%ld  %@",resData.length,contentType);
+                [sSelf sendMessage:responseData];
             }];
         }
     }
 }
 - (void)sendMessage:(NSData *)msgData {
-    
+     NSLog(@"+++%@",[NSThread currentThread]);
     NSUInteger dataLen = msgData.length;
     NSUInteger sendDataLen = kSendOrReceiveBytesNumbers;
     NSUInteger yu = dataLen%sendDataLen;
@@ -189,5 +192,6 @@
 }
 - (void)dealloc {
     [self stopPairStream];
+//    CFRunLoopStop(CFRunLoopGetCurrent());
 }
 @end

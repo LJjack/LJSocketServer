@@ -12,6 +12,7 @@
 static LJSocketHandleHtmlBlock _block;
 + (void)handleHtmlWithRequestData:(NSData *)requestData block:(LJSocketHandleHtmlBlock)block{
     _block = block;
+    NSLog(@"==%@",[[NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding]);
     CFHTTPMessageRef message = CFHTTPMessageCreateEmpty(kCFAllocatorDefault, YES);
     CFHTTPMessageAppendBytes(message, [requestData bytes], requestData.length);
     CFURLRef URLRef = CFHTTPMessageCopyRequestURL(message);
@@ -31,10 +32,19 @@ static LJSocketHandleHtmlBlock _block;
     
 }
 + (void)selectedHtmlWithHtmlName:(NSString *)htmlString {
-    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:htmlString ofType:nil];
-    NSData *htmlData = [NSData dataWithContentsOfFile:htmlPath];
+    NSURL *htmlURL = [[NSBundle mainBundle] URLForResource:htmlString withExtension:nil];
+    NSData *htmlData = nil;
+    NSString *contentType = nil;
+    if ([htmlString hasSuffix:@"html"]) {
+        htmlData = [NSData dataWithContentsOfURL:htmlURL];
+        contentType = @"text/html;charset=utf-8";
+    }else if ([htmlString hasSuffix:@"png"]) {
+        htmlData = [NSData dataWithContentsOfURL:htmlURL];
+        contentType = @"image/png";
+    }
+    
     if (_block) {
-        _block(htmlData);
+        _block(htmlData,contentType);
     }
 }
 @end

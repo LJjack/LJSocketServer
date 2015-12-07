@@ -116,15 +116,23 @@ static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CF
 - (void)doAcceptFromSocket:(CFSocketRef)parentSocket
        withNewNativeSocket:(CFSocketNativeHandle)nativeSocketHandle {
     if (nativeSocketHandle) {
-        
-        LJSocketPairStream *pairStream = [[LJSocketPairStream alloc] init];
-        pairStream.serverIdentity = self.serverIdentity;
-        pairStream.requestDelegate = self;
-        [pairStream createPairStreamWithSocketNativeSocketHandle:nativeSocketHandle];
-        [self.pairStreamMArray addObject:pairStream];
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            LJSocketPairStream *pairStream = [[LJSocketPairStream alloc] init];
+            pairStream.currentQueue = dispatch_get_current_queue();
+            pairStream.serverIdentity = self.serverIdentity;
+            pairStream.requestDelegate = self;
+            [pairStream createPairStreamWithSocketNativeSocketHandle:nativeSocketHandle];
+            [self.pairStreamMArray addObject:pairStream];
+//            CFRunLoopRun();
+            NSLog(@"AAAAAAA%@",[NSThread currentThread]);
+//        });
+    
     }
 }
 - (void)socketPairStreamRequestDidFinish:(LJSocketPairStream *)request {
+    NSLog(@"");
+    NSLog(@"BBBBBBBB%@",[NSThread currentThread]);
+    NSLog(@"socketPairStreamRequestDidFinish");
     [self.pairStreamMArray removeObject:request];
     request = nil;
 }
@@ -170,11 +178,12 @@ static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CF
 }
 - (void)dealloc {
     [self stopSocketConnection];
+//    CFRunLoopStop(CFRunLoopGetCurrent());
 }
 @end
 ////////////////socket回调函数////////////////////
 static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CFDataRef address, const void *data, void *info)
-{
+{NSLog(@"*********************");
     @autoreleasepool {
         LJSocketServer *server = (__bridge LJSocketServer *)info;
         NSData *inAddress = [(__bridge NSData *)address copy];

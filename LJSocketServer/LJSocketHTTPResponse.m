@@ -9,11 +9,10 @@
 #import "LJSocketHTTPResponse.h"
 #import "LJGzip.h"
 @implementation LJSocketHTTPResponse
-+ (NSData *)getResponseDataWithData:(NSData *)data {
++ (NSData *)getResponseDataWithData:(NSData *)data contentType:(NSString * _Nonnull)contentType{
     if (data) {
         data = [LJGzip compressData:data];//压缩
     }
-    
     CFHTTPMessageRef message =CFHTTPMessageCreateResponse(
                                                           kCFAllocatorDefault,
                                                           200,
@@ -21,10 +20,11 @@
                                                           kCFHTTPVersion1_1);
     CFHTTPMessageSetHeaderFieldValue(message,
                                      (__bridge CFStringRef)@"Content-Type",
-                                     (__bridge CFStringRef)@"text/html;charset=utf-8");
+                                     (__bridge CFStringRef)contentType);
     CFHTTPMessageSetHeaderFieldValue(message,
                                      (__bridge CFStringRef)@"Connection",
                                      (__bridge CFStringRef)@"close");
+   
     CFHTTPMessageSetHeaderFieldValue(message,
                                      (__bridge CFStringRef)@"Content-Length",
                                      (__bridge CFStringRef)[NSString stringWithFormat:@"%lu",(unsigned long)[data length]]);
