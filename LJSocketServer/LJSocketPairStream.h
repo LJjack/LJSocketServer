@@ -19,10 +19,10 @@
 
 @end
 @interface LJSocketPairStream : NSObject
-@property (assign,nonatomic,nonnull) dispatch_queue_t currentQueue;
 @property (copy,nonatomic,nonnull) NSString *ipAndPort;
 @property (assign,nonatomic,nullable) id<LJSocketPairStreamDelegate> requestDelegate;
 @property (assign,nonatomic,nullable) SecIdentityRef    serverIdentity __attribute(( NSObject ));
 - (void)createPairStreamWithSocketNativeSocketHandle:(CFSocketNativeHandle)nativeSocketHandle;
+- (void)runPairStream;
 - (void)stopPairStream;
 @end

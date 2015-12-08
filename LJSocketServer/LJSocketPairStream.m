@@ -25,11 +25,10 @@
     return self;
 }
 - (void)createPairStreamWithSocketNativeSocketHandle:(CFSocketNativeHandle)nativeSocketHandle {
-    NSLog(@"%@",[NSThread currentThread]);
-    NSString *ipAddress = [LJSocketIpAndPort connectedHostFromNativeSocket4:nativeSocketHandle];
-    UInt16 port = [LJSocketIpAndPort connectedPortFromNativeSocket4:nativeSocketHandle];
-    self.ipAndPort = [NSString stringWithFormat:@"%@:%d",ipAddress,port];
-    NSLog(@"接受一个新的客户端 %@",self.ipAndPort);
+//    NSString *ipAddress = [LJSocketIpAndPort connectedHostFromNativeSocket4:nativeSocketHandle];
+//    UInt16 port = [LJSocketIpAndPort connectedPortFromNativeSocket4:nativeSocketHandle];
+//    self.ipAndPort = [NSString stringWithFormat:@"%@:%d",ipAddress,port];
+//    NSLog(@"接受一个新的客户端 %@",self.ipAndPort);
     CFReadStreamRef iStream;
     CFWriteStreamRef oStream;
     // 创建一个可读写的socket连接
@@ -58,18 +57,20 @@
             BOOL successOutput = [outputStream  setProperty:setting forKey:(__bridge NSString *) kCFStreamPropertySSLSettings];
             assert(successOutput);
         }
-    // 设置代理，监听输入流和输出流中的变化
-    [inputStream setDelegate:self];
-    [outputStream setDelegate:self];
-    // Scoket是建立的长连接，需要将输入输出流添加到当前运行循环
-    NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
-    [inputStream scheduleInRunLoop:currentRunLoop forMode:NSDefaultRunLoopMode];
-    [outputStream scheduleInRunLoop:currentRunLoop forMode:NSDefaultRunLoopMode];
-    // 打开输入流和输出流，准备开始文件读写操作
-    [inputStream open];
-    [outputStream open];
     self.inputStream = inputStream;
     self.outputStream = outputStream;
+}
+- (void)runPairStream {
+    // 设置代理，监听输入流和输出流中的变化
+    [self.inputStream setDelegate:self];
+    [self.outputStream setDelegate:self];
+    // Scoket是建立的长连接，需要将输入输出流添加到当前运行循环
+    NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
+    [self.inputStream scheduleInRunLoop:currentRunLoop forMode:NSDefaultRunLoopMode];
+    [self.outputStream scheduleInRunLoop:currentRunLoop forMode:NSDefaultRunLoopMode];
+    // 打开输入流和输出流，准备开始文件读写操作
+    [self.inputStream open];
+    [self.outputStream open];
 }
 - (void)stopPairStream{
     //清空buff
@@ -77,14 +78,14 @@
     //停止客户端
     if (self.inputStream) {
         [self.inputStream setDelegate:nil];
-        [self.inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [self.inputStream close];
+        [self.inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         self.inputStream = nil;
     }
     if (self.outputStream) {
         [self.outputStream setDelegate:nil];
-        [self.outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [self.outputStream close];
+        [self.outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         self.outputStream = nil;
     }
 }
@@ -137,8 +138,6 @@
             if ([_requestDelegate respondsToSelector:@selector(socketPairStreamRequestDidFinish:)]) {
                 [_requestDelegate socketPairStreamRequestDidFinish:self];
             }
-            // 关闭流的同时，将流从主运行循环中删除
-            [self stopPairStream];
             break;
         default:
             break;
@@ -151,19 +150,16 @@
         _isReadData = NO;
         //转发数据
         if (self.outputStream.streamStatus == NSStreamStatusOpen) {
-//            [self.inputStream close];
             __weak typeof(self) wSelf = self;
             [LJSocketHandleHtml handleHtmlWithRequestData:self.mBuffData block:^(NSData *resData, NSString *contentType) {
                 __strong typeof(self) sSelf = wSelf;
                 NSData *responseData = [LJSocketHTTPResponse getResponseDataWithData:resData contentType:contentType];
-                NSLog(@"%ld  %@",resData.length,contentType);
                 [sSelf sendMessage:responseData];
             }];
         }
     }
 }
 - (void)sendMessage:(NSData *)msgData {
-     NSLog(@"+++%@",[NSThread currentThread]);
     NSUInteger dataLen = msgData.length;
     NSUInteger sendDataLen = kSendOrReceiveBytesNumbers;
     NSUInteger yu = dataLen%sendDataLen;
@@ -192,6 +188,5 @@
 }
 - (void)dealloc {
     [self stopPairStream];
-//    CFRunLoopStop(CFRunLoopGetCurrent());
 }
 @end

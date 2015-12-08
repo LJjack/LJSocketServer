@@ -93,7 +93,9 @@ static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CF
 #pragma mark Run Loop Remove Source
 - (void)removeRunLoopSource {
     if (_theSource4) {
-        CFRunLoopRemoveSource(CFRunLoopGetCurrent(), _theSource4, kCFRunLoopCommonModes);
+        if (CFRunLoopContainsSource(CFRunLoopGetCurrent(), _theSource4, kCFRunLoopCommonModes)) {
+            CFRunLoopRemoveSource(CFRunLoopGetCurrent(), _theSource4, kCFRunLoopCommonModes);
+        }
         CFRunLoopStop(CFRunLoopGetCurrent());
         CFRelease(_theSource4);
         _theSource4 = NULL;
@@ -111,32 +113,25 @@ static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CF
             NSLog(@"socket server fail");
         }
     });
-    
 }
 - (void)doAcceptFromSocket:(CFSocketRef)parentSocket
        withNewNativeSocket:(CFSocketNativeHandle)nativeSocketHandle {
     if (nativeSocketHandle) {
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            LJSocketPairStream *pairStream = [[LJSocketPairStream alloc] init];
-            pairStream.currentQueue = dispatch_get_current_queue();
-            pairStream.serverIdentity = self.serverIdentity;
-            pairStream.requestDelegate = self;
-            [pairStream createPairStreamWithSocketNativeSocketHandle:nativeSocketHandle];
-            [self.pairStreamMArray addObject:pairStream];
-//            CFRunLoopRun();
-            NSLog(@"AAAAAAA%@",[NSThread currentThread]);
-//        });
-    
+        LJSocketPairStream *pairStream = [[LJSocketPairStream alloc] init];
+        pairStream.serverIdentity = self.serverIdentity;
+        pairStream.requestDelegate = self;
+        [pairStream createPairStreamWithSocketNativeSocketHandle:nativeSocketHandle];
+        [pairStream runPairStream];
+        [self.pairStreamMArray addObject:pairStream];
     }
 }
 - (void)socketPairStreamRequestDidFinish:(LJSocketPairStream *)request {
-    NSLog(@"");
-    NSLog(@"BBBBBBBB%@",[NSThread currentThread]);
-    NSLog(@"socketPairStreamRequestDidFinish");
+    [request stopPairStream];
     [self.pairStreamMArray removeObject:request];
     request = nil;
 }
 - (void)socketPairStreamRequestDidReceiveError:(LJSocketPairStream *)request {
+    [request stopPairStream];
     [self.pairStreamMArray removeObject:request];
     request = nil;
 }
@@ -178,12 +173,11 @@ static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CF
 }
 - (void)dealloc {
     [self stopSocketConnection];
-//    CFRunLoopStop(CFRunLoopGetCurrent());
 }
 @end
 ////////////////socket回调函数////////////////////
 static void MyCFSocketCallback(CFSocketRef socket, CFSocketCallBackType type, CFDataRef address, const void *data, void *info)
-{NSLog(@"*********************");
+{
     @autoreleasepool {
         LJSocketServer *server = (__bridge LJSocketServer *)info;
         NSData *inAddress = [(__bridge NSData *)address copy];
